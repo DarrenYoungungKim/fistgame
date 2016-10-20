@@ -1,4 +1,5 @@
 /*global Phaser*/
+
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
     preload: preload,
     create: create,
@@ -16,6 +17,7 @@ var cursors;
 var hitPlatform;
 var stars;
 var scoreText;
+var score = 0;
 
 function preload() {
     game.load.image('sky', 'assets/sky.png');
@@ -58,6 +60,13 @@ function create() {
     player.body.gravity.y = 400;
     game.physics.arcade.enable(platforms);
     ground3.body.immovable = true;
+     
+     
+     
+     
+     
+     
+     
        // Our two animations, walking left and right.
     player.animations.add('left', [0,1,2,3], 10, true);
     player.animations.add('right', [5,6,7,8], 10, true);
@@ -129,6 +138,7 @@ function collectstar(player, star) {
     // Removes the star from the screen
     star.kill();
 
-
+    score = score + 1
+    scoreText.text =  "score"+score
 
 }
